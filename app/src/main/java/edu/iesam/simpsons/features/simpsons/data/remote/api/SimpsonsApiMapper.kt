@@ -6,5 +6,5 @@ fun CharacterModel.toModel(): Character {
     return Character(this.id,
         this.name,
         this.occupation,
-        this.imageUrl)
+        "https://cdn.thesimpsonsapi.com/500" + this.imageUrl)
 }
