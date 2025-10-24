@@ -28,4 +28,20 @@ class SimpsonsApiRemoteDataSource(private val apiClient: ApiClient) {
         }
 
     }
+
+    suspend fun getCharacterById(id: Int): Result<Character>{
+        return withContext(Dispatchers.IO){
+            val apiService = apiClient.createService(SimpsonsApiService::class.java)
+            val resultSimpsons = apiService.findById(id)
+
+            if (resultSimpsons.isSuccessful && resultSimpsons.errorBody() == null){
+                val characterApiModel : CharacterModel = resultSimpsons.body()!!
+                val character = characterApiModel.toModel()
+
+                Result.success(character)
+            } else {
+                Result.failure(ErrorApp.ServerError)
+            }
+        }
+    }
 }

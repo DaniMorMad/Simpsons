@@ -12,15 +12,15 @@ import edu.iesam.simpsons.core.api.ApiClient
 import edu.iesam.simpsons.features.simpsons.data.SimpsonsDataRepository
 import edu.iesam.simpsons.features.simpsons.data.remote.api.SimpsonsApiRemoteDataSource
 import edu.iesam.simpsons.features.simpsons.domain.GetAllCharactersUseCase
+import edu.iesam.simpsons.features.simpsons.domain.GetCharacterByIdUseCase
 
 class SimpsonsListActivity : AppCompatActivity() {
 
+    private val dataRepository = SimpsonsDataRepository(
+        SimpsonsApiRemoteDataSource(ApiClient())
+    )
     private val viewModel = SimpsonsListViewModel(
-        GetAllCharactersUseCase(
-            SimpsonsDataRepository(
-                SimpsonsApiRemoteDataSource(ApiClient())
-            )
-        )
+        GetAllCharactersUseCase(dataRepository), GetCharacterByIdUseCase(dataRepository)
     )
 
 
@@ -35,24 +35,23 @@ class SimpsonsListActivity : AppCompatActivity() {
         }
 
         setupObserver()
-        viewModel.loadSimpsons()
+        viewModel.loadAllSimpsons()
+        viewModel.loadSimpsonById(2)
     }
 
     private fun setupObserver() {
-        val observer = Observer<SimpsonsListViewModel.UiState>{ uiState ->
-            if (uiState.isLoading){
+        val observer = Observer<SimpsonsListViewModel.UiState> { uiState ->
+            if (uiState.isLoading) {
                 //Muestro un spinner
-                Log.d("@dev", "cargando")
             } else {
                 //oculto spinner
             }
 
-            //El viewmodel me pasa el uiState
-            if (uiState.error != null){
-                Log.d("@dev", "error nulo")
+            if (uiState.error != null) {
+
             } else {
                 uiState.error?.let { error ->
-                    Log.d("@dev", error.toString())
+
                 }
             }
 
