@@ -10,7 +10,7 @@ interface SimpsonsApiService {
     @GET("characters")
     suspend fun findAll(): Response<SimpsonsApiModel>
 
-    @GET("id/{simpsonsId}.json")
-    fun findById(@Path("simpsonsId") id: String): SimpsonsApiModel
+    @GET("characters/{simpsonsId}")
+    suspend fun findById(@Path("simpsonsId") id: Int): Response<CharacterModel>
 
 }
