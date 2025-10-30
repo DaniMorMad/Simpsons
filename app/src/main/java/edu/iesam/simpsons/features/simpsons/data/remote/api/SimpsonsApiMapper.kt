@@ -7,6 +7,6 @@ fun CharacterModel.toModel(): Character {
         this.id,
         this.name,
         this.occupation,
-        "https://cdn.thesimpsonsapi.com/500" + this.imageUrl
+        "https://cdn.thesimpsonsapi.com/1280" + this.imageUrl
     )
 }
