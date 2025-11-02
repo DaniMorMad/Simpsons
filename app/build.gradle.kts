@@ -7,6 +7,11 @@ android {
     namespace = "edu.iesam.simpsons"
     compileSdk = 36
 
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "edu.iesam.simpsons"
         minSdk = 26
@@ -50,6 +55,8 @@ dependencies {
 
     //Coroutines
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.fragment)
+    implementation(libs.androidx.recyclerview)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
