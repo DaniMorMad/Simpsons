@@ -5,27 +5,27 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import edu.iesam.simpsons.features.simpsons.domain.ErrorApp
-import edu.iesam.simpsons.features.simpsons.domain.GetAllCharactersUseCase
 import edu.iesam.simpsons.features.simpsons.domain.Character
+import edu.iesam.simpsons.features.simpsons.domain.GetCharacterByIdUseCase
 import kotlinx.coroutines.launch
 
-class SimpsonsListViewModel(
-    val getAll: GetAllCharactersUseCase
+class SimpsonsDetailsViewModel(
+    val getById: GetCharacterByIdUseCase
 ) :
     ViewModel() {
 
     private val _uiState = MutableLiveData<UiState>()
     val uiState: LiveData<UiState> = _uiState
 
-    fun loadAllSimpsons() {
+    fun loadSimpson(id: Int) {
         viewModelScope.launch {
             _uiState.value = UiState(isLoading = true)
-            getAll().fold({ onSuccess(it) }, { onError(it as ErrorApp) })
+            getById(id).fold({ onSuccess(it) }, { onError(it as ErrorApp) })
         }
     }
 
 
-    private fun onSuccess(characters: List<Character>) {
+    private fun onSuccess(characters: Character) {
         _uiState.value = UiState(characters = characters)
     }
 
@@ -37,7 +37,7 @@ class SimpsonsListViewModel(
     data class UiState(
         val error: ErrorApp? = null,
         val isLoading: Boolean = false,
-        val characters: List<Character>? = null
+        val characters: Character? = null
     )
 
 }
