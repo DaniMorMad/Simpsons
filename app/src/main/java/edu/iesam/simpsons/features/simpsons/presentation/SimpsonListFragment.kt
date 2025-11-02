@@ -12,7 +12,6 @@ import edu.iesam.simpsons.databinding.FragmentSimpsonListBinding
 import edu.iesam.simpsons.features.simpsons.data.SimpsonsDataRepository
 import edu.iesam.simpsons.features.simpsons.data.remote.api.SimpsonsApiRemoteDataSource
 import edu.iesam.simpsons.features.simpsons.domain.GetAllCharactersUseCase
-import edu.iesam.simpsons.features.simpsons.presentation.SimpsonsAdapter
 
 class SimpsonListFragment : Fragment() {
 
@@ -57,9 +56,9 @@ class SimpsonListFragment : Fragment() {
     private fun setupObserver() {
         listViewModel.uiState.observe(this) { uiState ->
             if (uiState.isLoading) {
-                //Muestro un spinner
+                binding.progressBar.visibility = View.VISIBLE
             } else {
-                //oculto spinner
+                binding.progressBar.visibility = View.GONE
             }
 
             uiState.error?.let { error ->
