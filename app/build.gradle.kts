@@ -58,6 +58,11 @@ dependencies {
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.recyclerview)
 
+    //Coil
+    implementation(libs.coil)
+    implementation(libs.coil.network.okhttp)
+
+    //Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

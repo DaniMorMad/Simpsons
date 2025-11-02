@@ -1,9 +1,10 @@
-package edu.iesam.simpsons.features.simpsons.presentation.adapter
+package edu.iesam.simpsons.features.simpsons.presentation
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil3.load
 import edu.iesam.simpsons.R
 import edu.iesam.simpsons.databinding.CharacterItemLayoutBinding
 import edu.iesam.simpsons.features.simpsons.domain.Character
@@ -32,10 +33,9 @@ class SimpsonsAdapter : RecyclerView.Adapter<SimpsonsAdapter.CharacterViewHolder
         private val binding = CharacterItemLayoutBinding.bind(view)
 
         fun bind(character: Character) {
-            binding.ciTvNombre.text = character.name
-            binding.ciTvSlug.text = character.occupation
-            // Faltaría cargar la imagen con una librería como Glide o Picasso
-            // binding.lsIvFoto.load(character.imagen)
+            binding.ciTvName.text = character.name
+            binding.ciTvOccupation.text = character.occupation
+            binding.ciIvPhoto.load(character.imageUrl)
         }
     }
 }

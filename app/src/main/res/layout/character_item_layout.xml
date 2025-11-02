@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="21dp" />
+        app:layout_constraintGuide_begin="16dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -41,7 +41,7 @@
         app:srcCompat="@drawable/character_list_shape" />
 
     <ImageView
-        android:id="@+id/ciIvFoto"
+        android:id="@+id/ciIvPhoto"
         android:layout_width="121dp"
         android:layout_height="115dp"
         android:layout_marginStart="16dp"
@@ -51,7 +51,7 @@
         app:srcCompat="@color/material_dynamic_primary20" />
 
     <TextView
-        android:id="@+id/ciTvNombre"
+        android:id="@+id/ciTvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -59,19 +59,21 @@
         android:text="placeholder"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/ciIvFoto"
+        app:layout_constraintStart_toEndOf="@+id/ciIvPhoto"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/ciTvSlug"
-        android:layout_width="wrap_content"
+        android:id="@+id/ciTvOccupation"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
         android:text="placeholder"
-        app:layout_constraintStart_toEndOf="@+id/ciIvFoto"
-        app:layout_constraintTop_toBottomOf="@+id/ciTvNombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ciIvPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/ciTvName"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

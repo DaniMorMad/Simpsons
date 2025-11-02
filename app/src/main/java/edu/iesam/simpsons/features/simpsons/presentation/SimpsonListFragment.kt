@@ -12,7 +12,7 @@ import edu.iesam.simpsons.databinding.FragmentSimpsonListBinding
 import edu.iesam.simpsons.features.simpsons.data.SimpsonsDataRepository
 import edu.iesam.simpsons.features.simpsons.data.remote.api.SimpsonsApiRemoteDataSource
 import edu.iesam.simpsons.features.simpsons.domain.GetAllCharactersUseCase
-import edu.iesam.simpsons.features.simpsons.presentation.adapter.SimpsonsAdapter
+import edu.iesam.simpsons.features.simpsons.presentation.SimpsonsAdapter
 
 class SimpsonListFragment : Fragment() {
 
